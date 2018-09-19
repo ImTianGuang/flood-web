@@ -1,0 +1,15 @@
+<view wx:for-items="{{commonTypeList}}" wx:key="*item">
+  <view class="select-block" wx:if="{{item.status == 1}}">
+    <view class="pair">
+      <input class='weui-cells__title' style='width:80%;' value="{{item.name}}" placeholder='{{placeholder}}' bindinput='onInputType' data-idx='{{index}}'></input>
+      <view style='width:20%;text-align:right'>
+      <image class='my-icon-right' src='../../../common/resources/icon/subtract.png'bindtap="subtractType" data-idx='{{index}}'></image>
+      </view>
+    </view>
+  </view>
+</view>
+<view style='width:100%;text-align:right;background:#ffff;margin-top:5px;'>
+                  <image class='my-icon-right' src='../../../common/resources/icon/plus.png' bindtap='addType' data-attributionid='{{phoneInfo.id}}'></image>
+                  </view>
+<view style='width:100%;height:75px;'></view>
+<button type='primary' class='save-button' bindtap='saveType'>保存</button>

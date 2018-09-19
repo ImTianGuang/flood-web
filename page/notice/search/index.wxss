@@ -1,0 +1,55 @@
+@import "../../../wxSearchView/wxSearchView.wxss";
+@import "../../common/index.wxss";
+@import "../../common/lib/weui.wxss";
+@import "../../common/calendar/index.wxss";
+
+.first-block{
+width: 100%;
+
+text-align: center;
+display: inline-block;
+}
+
+.second-block{
+width: 100%;
+
+  background: #FFFFFF;
+    display: inline-block;
+}
+
+.calendar-wrap-hd {
+  display:block;
+  overflow:hidden;
+  height: 0;
+}
+
+.calendar-wrap-show {
+  display:block;
+}
+
+.select-l {
+    width: 50%;
+    font-size: 18px;
+    line-height: 42px;
+    height: 42px;
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #212121;
+    text-align: center;
+}
+
+.select-r {
+    width: 50%;
+    float: right;
+    font-size: 18px;
+    line-height: 42px;
+    height: 42px;
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #212121;
+    text-align: center;
+}

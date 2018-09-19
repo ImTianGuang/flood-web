@@ -1,0 +1,8 @@
+<view class="navigator-box navigator-box-show">
+<block wx:for="{{manageItems}}" wx:key="*item">
+                <navigator url="{{item.page}}" class="navigator">
+                  <view class="navigator-text">{{item.name}}</view>
+                  <view class="navigator-arrow"></view>
+                </navigator>
+              </block>
+</view>

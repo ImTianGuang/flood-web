@@ -1,0 +1,39 @@
+<view class='weui-article'>
+  <view class='article_head'>
+    <view class="weui-article__h1">
+    {{floodSituation.title}}
+    </view>
+    <view class='article_info'>
+      {{company.name}} {{floodCreateTime}}
+    </view>
+  </view>
+
+  <view class='weui-article__section'>
+    <view class='weui-article__h2'>汛情与灾情</view>
+    <view class='weui-article__p'>
+      <view wx:for-items="{{situationList}}" wx:for-item="situation" wx:key="*situation" wx:for-index="index" class='weui-article__p'>
+        <view style='width:100%;'>{{situationTypeList[situation.idx].name}}： {{situation.targetValue}}
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class='weui-article__section'>
+    <view class='weui-article__h2'>应对措施</view>
+    <view class='weui-article__p'>
+      <view wx:for-items="{{solutionList}}" wx:for-item="solution" wx:key="*solution" wx:for-index="index" class='weui-article__p'>
+        <view style='width:100%;'>{{solutionTypeList[solution.idx].name}}： {{solution.targetValue}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class='weui-article__section'>
+    <view class='weui-article__h2'>详情</view>
+    <view class='weui-article__p'>
+      <text>
+        {{floodSituation.floodDesc}}
+      </text>
+    </view>
+  </view>
+
+</view>

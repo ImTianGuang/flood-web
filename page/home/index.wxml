@@ -1,0 +1,63 @@
+<view class='content'>
+<view class='first-block'>
+  <swiper indicator-dots="true"
+        autoplay="true" interval="2000" duration="500">
+       
+          <swiper-item>
+             <image style='width:100%;' src='resources/banner1.jpeg'></image>
+          </swiper-item>
+     
+     <swiper-item>
+             <image  style='width:100%;' src='resources/banner1.jpeg'></image>
+          </swiper-item>
+          <swiper-item>
+             <image style='width:100%;' src='resources/banner1.jpeg'></image>
+          </swiper-item>
+      </swiper>
+</view>
+
+<view class='third-block'>
+
+<navigator class='third-block-item' url='../company/search/index'>
+  <view class='third-block-halfItem'>
+    <view class='third-block-item-name' style='color:#FF8341;'>单位信息</view> 
+    <!-- <view class='third-block-item-desc'>通讯录,物资,预案</view> -->
+  </view>
+  <view class='third-block-halfItem'>
+    <image class='third-block-item-icon' src='resources/companyInfo.png'></image>
+  </view>
+</navigator>
+
+<navigator class='third-block-item' url='../notice/search/index'>
+  <view class='third-block-halfItem'>
+    <text class='third-block-item-name' style='color:#009AF7;'>通知与简报</text> 
+    <!-- <text class='third-block-item-desc'>通知与简报</text> -->
+  </view>
+  <view class='third-block-halfItem'>
+    <image class='third-block-item-icon' src='resources/noticeInfo.png'></image>
+  </view>
+</navigator>
+
+<navigator class='third-block-item' url='../flood/search/index'>
+  <view class='third-block-halfItem'>
+    <text class='third-block-item-name' style='color:#FC4C5B;'>应对与处置</text> 
+    <!-- <text class='third-block-item-desc'>实时汛情说明</text> -->
+  </view>
+  <view class='third-block-halfItem'>
+    <image class='third-block-item-icon' src='resources/floodInfo.png'></image>
+  </view>
+</navigator>
+
+<navigator class='third-block-item' url='../basic-manage/index'>
+  <view class='third-block-halfItem'>
+    <text class='third-block-item-name' style='color:#8BC34A'>基础维护</text> 
+    <!-- <text class='third-block-item-desc'>维护说明</text> -->
+  </view>
+  <view class='third-block-halfItem'>
+    <image class='third-block-item-icon' src='resources/setting.png'></image>
+  </view>
+</navigator>
+
+</view>
+</view>
+

@@ -1,0 +1,69 @@
+<view class="weui-search-bar">
+   <view class="weui-search-bar__form">
+    <view class="weui-search-bar__box">
+      <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+      <input type="text" class="weui-search-bar__input" placeholder="请输入查询内容" value="{{wxSearchData.value}}" bindconfirm="wxSearchConfirm" bindinput='wxSearchInput' style='text-align:left;'/>
+      <view class="weui-icon-clear" wx:if="{{wxSearchData.value.length > 0}}" bindtap="wxSearchClear">
+        <icon type="clear" size="16"></icon>
+      </view>
+    </view>
+  </view>
+    <view wx:if="{{showExport}}" class="weui-search-bar__cancel-btn" style='padding-top:3px;line-height:15px;' bindtap="wxExport">
+        <image style='width:25px;height:25px;margin-left:2px;' src='../../common/resources/icon/export.png'></image>
+         <!-- <text data-key='search'>导出</text> -->
+         <!-- <text wx:else data-key='back'>取消</text> -->
+     </view>
+     <view wx:if="{{showPlus}}" class="weui-search-bar__cancel-btn" bindtap="wxAddItem"  style='padding-top:4px;line-height:15px;'>
+     <image style='width:22px;height:22px;margin-left:2px;' src='../../common/resources/icon/plus-list.png'></image>
+         <!-- <text data-key='search'>新增</text> -->
+         <!-- <text wx:else data-key='back'>取消</text> -->
+     </view>
+</view>
+
+
+<!-- <view class="wxSearch">
+
+  <view class="wxSearchInner">
+    
+    <view class="wxSearchMindKey">
+      <view class="wxSearchMindKeyList">
+        <block wx:for="{{wxSearchData.tipKeys}}">
+          <view class="wxSearchMindKeyItem" bindtap="wxSearchKeyTap" data-key="{{item}}">{{item}}</view>
+        </block>
+      </view>
+    </view>
+
+    <view wx:if="{{wxSearchData.his[0]}}" class="wxSearchHistory" style="display:{{wxSearchData.value.length>0 ? 'none':'block'}}">
+      <view class="wxSearchHistoryItem">
+        <text class="wxSearchHistoryItemTitle">搜索记录</text>
+       
+        <icon type="clear" bindtap="wxSearchDeleteAll" size="18" />
+      </view>
+      <view class="wxSearchKeyList">
+        <block wx:for="{{wxSearchData.his}}">
+          <view class="wxSearchKeyItem" bindtap="wxSearchKeyTap" data-key="{{item}}">{{item}}</view>
+        </block>
+      </view>
+    </view>
+
+    <view class="wxSearchKey" style="display:{{wxSearchData.value.length>0 ? 'none':'block'}}">
+      <text wx:if="{{wxSearchData.hotKeys[0]}}" class="wxSearchTitle">搜索热点</text>
+      <view class="wxSearchKeyList">
+        <block wx:for="{{wxSearchData.hotKeys}}">
+          <view class="wxSearchKeyItem" bindtap="wxSearchKeyTap" data-key="{{item}}">{{item}}</view>
+        </block>
+      </view>
+    </view>
+  </view>
+</view> -->
+
+<!--使用animation属性指定需要执行的动画-->  
+<view animation="{{animationData}}" class="drawer_box" wx:if="{{showModalStatus}}"> 
+  <!--drawer content-->  
+  <view class="drawer_title">导出数据</view> 
+  <input type='text'placeholder="请输入接收邮箱,多个用;分割" auto-focus bindinput='onContentInput' style='border:1px solid rgba(187, 187, 187, 1);border-radius:5px 5px 5px 5px;margin-left:5px;margin-right:5px;'/>
+  <view style='display:inline-flex;width:100%;text-align:center'>
+  <view class="btn_ok" style='text-align:center;width:50%;' bindtap="powerDrawer" data-statu="close">取消</view>
+  <view class="btn_ok" style='text-align:center;width:50%;' bindtap="powerDrawer" data-statu="confirm">确定</view>
+  </view>
+</view>

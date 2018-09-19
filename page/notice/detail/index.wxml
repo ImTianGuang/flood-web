@@ -1,0 +1,16 @@
+<view class='weui-article'>
+  <view class='article_head'>
+    <view class="weui-article__h1">
+    {{message.title}}
+    </view>
+    <view class='article_info'>
+      {{createTime}}
+    </view>
+  </view>
+  <view class='weui-article__section'>
+  <text class='article_content'>
+  {{message.content}}
+  </text>
+  </view>
+</view>
+

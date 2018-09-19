@@ -1,0 +1,99 @@
+<view class="kind-list" style='overflow:hidden'>
+      <block wx:for-items="{{list}}" wx:key="{{item.id}}">
+
+        <view class="kind-list-item">
+
+          <view id="{{item.id}}" class="kind-list-item-hd {{item.open ? 'kind-list-item-hd-show' : ''}}" bindtap="kindToggle">
+            <view class="kind-list-text">{{item.name}}</view>
+          </view>
+
+          <view class=" {{item.open ? 'kind-list-item-bd-show' : 'kind-list-item-bd'}}">
+            <view class="{{item.open ? 'my-navigator-box-show' : 'my-navigator-box'}}">
+              <!-- 通讯录-start -->
+              <view wx:if="{{item.id == 'phones'}}" style='width:100%'>
+                <view wx:for-items="{{item.data.phoneList}}" wx:for-item="phoneInfo" wx:key="*phoneInfo" wx:for-index="phoneIdx">
+                   
+                   <view class='pair' style='margin-top:2px;'>
+                    <view class='title' style='width:25%;'>{{phoneInfo.name}}</view>
+                   </view>      
+
+                <view wx:for-items="{{phoneInfo.userList}}" wx:for-item="user" wx:key="*user" wx:for-index="useridx">
+                <!-- 联系人-start -->
+                <view wx:if="{{user.status}}" class='select-block' style='border-radius:20px;'>
+                
+                <view wx:if='{{phoneInfo.id==0}}'>
+                  <input class='my-input-l' style='width:100%' disabled='true' value='名称： {{user.floodTitle}}'/>
+
+                  <input class='my-input-l' style='width:100%' disabled='true' value='姓名： {{user.userName}}'/>
+                  <input class='my-input-l' style='width:100%' disabled='true' value='职务： {{positions[user.positionIdx].name}}'/>
+                  <input class='my-input-l' style='width:100%' disabled='true' value='工作电话： {{user.workPhone}}'/>
+                  <input class='my-input-l' style='width:100%' disabled='true' value='电话： {{user.userPhone}}'/>
+                  <input class='my-input-l' style='width:100%' disabled='true' value='传真： {{user.fax}}'/>
+                </view>
+
+                <view wx:if='{{phoneInfo.id==1}}'>
+                  <input class='my-input-l' style='width:100%' disabled='true' value='{{user.floodTitle}}： {{user.workPhone}}'/>
+                  <input class='my-input-l' style='width:100%' disabled='true' value='传真： {{user.fax}}'/>
+                </view>
+                  
+
+                </view>
+                <!-- 联系人-end -->
+                </view>
+                <!-- 所有联系人-end -->
+                </view>
+                <!-- 所有类别-end -->
+              </view>
+              <!-- 通讯录-end -->
+              <!-- 物资-start -->
+              <view wx:if="{{item.id == 'asserts'}}" style='width:100%;'>
+                <view class='select-block'>
+                  <input class='my-input-l' style="width:15em" disabled='true' value='防汛负责人： {{company.floodManager}}'/>
+                
+                  <input class='my-input-l' style="width:15em" disabled='true' value='防汛负责人电话： {{company.floodManagerPhone}}'/>
+ 
+                  <view wx:for-items="{{item.data.assertsList}}" wx:for-item="asserts" wx:key="*asserts" >
+                    <input wx:if="{{asserts.status == 1}}" class="my-input-l" style='width:15em' value='{{assertsTypeList[asserts.assertsTypeIdx].name}}： {{asserts.assertsValue}}'></input>  
+          
+                  </view>
+                  <!-- for-end -->
+                </view>
+                    
+              <!-- <view style='width:100%;text-align:right;background:#ffff;margin-top:5px;'>
+                  <image class='my-icon-right' src='../../common/resources/icon/plus.png' bindtap='addAsserts'></image>
+                </view> -->
+              </view>
+              <!-- 物资-end -->
+              <!-- 预案-start -->
+              <view wx:if="{{item.id == 'plan' && item.open}}" class='select-block' style='text-align: center;'> 
+                <view class='article' style='height:50rem;background:#fff;'>
+                  <view class='article_content' style='height:100%;'>
+                    <textarea class='my-input' maxlength="10000" style='height:100%; width:100%; background-color:#ffff;margin-top:5px;padding-left:5px;padding-top:2px;margin-left:0;' bindinput='onPlanConfirm' placeholder='该单位还未有防汛预案' value='{{company.floodPlan}}' disabled='true'/>
+                  </view>
+                </view>
+              </view>
+              <!-- 预案-end -->
+              <!-- 其他-start -->
+              <view wx:if="{{item.id == 'basic'}}" class='select-block'>
+                <view class='select-block' style='border-radius:20px;'>
+                  <input class='my-input-l' style='width:100%;' disabled='true' value='单位名称： {{company.name}}'/>
+                  <input class='my-input-l' style='width:100%;' disabled='true' value='单位地址： {{company.address}}'/>
+                  <!-- <input class='my-input-l' style='width:100%;' disabled='true' value='单位邮编： {{company.postCode}}'/> -->
+                  <input class='my-input-l' style='width:100%;' disabled='true' value='单位邮箱： {{company.email}}'/>
+                  <input class='my-input-l' style='width:100%;' disabled='true' value='记录人员： {{company.recordPerson}}'/>
+                  <input class='my-input-l' style='width:100%;' disabled='true' value='记录人电话： {{company.recordPersonPhone}}'/>
+                  <input class='my-input-l' style='width:100%;' disabled='true' value='填表日期： {{company.recordDate}}'/>
+                  <!-- <input class='my-input-l' style='width:100%;' disabled='true' value='检查人员电话： {{company.checkPersonPhone}}'/> -->
+                </view>
+              </view>
+              <!-- 其他-end -->
+            </view>
+          </view>
+        </view>
+      </block>
+      <view style='width:100%;height:140px;'></view>
+    </view>
+
+ 
+
+    

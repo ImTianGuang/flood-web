@@ -1,0 +1,120 @@
+<view class="main-block" style='height:auto'>
+      <view class='situation-block'>
+        <view class='pair'>
+            <view class='my-input-l' style='width:3em;padding-top:4px;padding-left:15px;'>单位:</view>
+            <picker bindchange="bindCompanyChange" value="{{companyIdx}}" range="{{companyList}}" range-key='name' class='my-input'>
+              <view class='pair'>
+                  <view style='width:80%;padding-top:4px;'>{{company.name}}</view>
+                  <view style='width: 20%;text-align: right;'>
+                    <image class='my-icon-right1' style='padding-right: 7px;padding-top: 5px;height: 15px;width:15px;' src='../../common/resources/icon/select.png'></image>
+                  </view>
+              </view> 
+            </picker>
+        </view>
+      </view>
+      <view class='situation-block'>
+        <view class='pair'>
+            <view class='my-input-l' style='width:3em;padding-top:4px;padding-left:15px;'>标题:</view>
+            <input class="my-input" value="{{floodSituation.title}}" placeholder='请输入标题'  disabled='{{!canManage}}' bindinput='onTitleInput'/>
+        </view>
+      </view>
+
+      <view class='select-block' style='display:inline-flex;'>
+        <view class="title" style='width:50%;'>汛情与灾情</view>  
+        <view wx:if='{{canManage}}' style='width:50%;text-align:right;'>
+        <image class='my-icon-right' src='../../common/resources/icon/plus.png'
+        bindtap='addSituation'></image>
+        </view>
+      </view>
+      <view wx:for-items="{{situationList}}" wx:for-item="situation" wx:key="*situation" wx:for-index="index">
+        <view wx:if="{{situation.status == 1}}" class='select-block' style='margin-top:0;'>
+          <view class='pair'>
+            <view class='pair' style='width:90%'>
+            <picker bindchange="bindSituationChange" value="{{situation.idx}}" range="{{situationTypeList}}" range-key='name' disabled='{{!canManage}}' data-idx='{{index}}' class='my-input' style='width:28em'>
+            <view class='pair'>
+                <view style='width:85%;padding-top:4px;'>{{situationTypeList[situation.idx].name}}</view>
+                <view style='width: 15%;text-align: right;'>
+                <image class='my-icon-right1' style='padding-right: 5px;padding-left:0px;padding-top: 4px;height: 15px;width:15px;' src='../../common/resources/icon/select.png'></image>
+                </view>
+            </view>
+            </picker>
+            <input class="my-input" type="text" placeholder="具体情况" disabled='{{!canManage}}' bindinput='onSituationInput' value='{{situation.targetValue}}' data-idx='{{index}}'/>
+            </view>
+
+            <view wx:if='{{canManage}}' style='width:10%;text-align:right;'>
+            <image class='my-icon-right' style='margin-top:1px;margin-bottom:1px;' src='../../common/resources/icon/subtract.png'bindtap='deleteSituation' data-idx='{{index}}'></image>
+            </view> 
+          </view>
+        </view>
+      </view>
+      
+      <view class='select-block' style='display:inline-flex;'>
+        <view class="title" style='width:50%;'>应对措施</view>  
+        <view wx:if='{{canManage}}' style='width:50%;text-align:right;'>
+        <image class='my-icon-right' src='../../common/resources/icon/plus.png'
+        bindtap='addSolution'></image>
+        </view>
+      </view>
+      <view wx:for-items="{{solutionList}}" wx:for-item="solution" wx:key="*solution" wx:for-index="index">
+        <view wx:if="{{solution.status == 1}}" class='select-block' style='margin-top:0;'>
+          <view class='pair'>
+            <view class='pair' style='width:90%;'>
+            <picker bindchange="bindSolutionChange" value="{{solution.idx}}" range="{{solutionTypeList}}" range-key='name' disabled='{{!canManage}}' data-idx='{{index}}' class='my-input' style='width:28em'>
+            <view class='pair'>
+                <view style='width:85%;padding-top:4px;'>{{solutionTypeList[solution.idx].name}}</view>
+                <view style='width: 15%;text-align: right;'>
+                <image class='my-icon-right1' style='padding-right: 5px;padding-left:0px;padding-top: 4px;height: 15px;width:15px;' src='../../common/resources/icon/select.png'></image>
+                </view>
+            </view>
+            </picker>
+            <input disabled='{{!canManage}}' class="my-input" type="text" placeholder="具体情况" bindinput='onSolutionInput' value='{{solution.targetValue}}' data-idx='{{index}}'/>
+            </view>
+            <view wx:if='{{canManage}}' style='width:10%;text-align:right;'>
+            <image class='my-icon-right' style='margin-top:1px;margin-bottom:1px;' src='../../common/resources/icon/subtract.png'bindtap='deleteSolution' data-idx='{{index}}'></image>
+            </view> 
+          </view>
+        </view>
+      </view>
+  <view class='select-block' style='display:inline-flex;height:50px;'>
+        <view class="title" style='width:50%;'>详情描述</view>
+  </view>
+  <view class='article' style='border-bottom:0px;'>
+    <view class='article_content' style='height:250px;'>
+    <textarea class='my-input' maxlength="1000" style='height:100%; width:100%; background-color:#ffff;margin-top:5px;margin-left:0;' bindinput='onFloodDescInput' placeholder='请输入详情描述' value='{{floodSituation.floodDesc}}'/>
+    </view>
+  </view>  
+
+  <view class='select-block' style='display:inline-flex;height:50px;'>
+        <view class="title" style='width:50%;'>附件上传</view>
+  </view>
+  <view class='article' style='height: auto;background: #fff;margin-top: .5em;'>
+    
+    <view wx:if='{{situationId > 0}}'>
+      <view class='pair'>
+        <view class='my-input' style='width:80%;padding-top:.3em;'>
+          {{uploadUrl}}
+        </view>
+        <view class='my-input' style='width:20%;padding-top:.3em;color:#666' bindtap='copy'>复制链接</view>
+      </view>
+      <view class='i_con_cmt'>
+      请点击【复制链接】按钮，拷贝链接到PC端浏览器打开，完成上传！
+      </view>
+    </view>
+    <view wx:if='{{!situationId || situationId <= 0}}'>
+      <view class='i_con_cmt'>
+      如需上传附件，请先点击保存按钮，再重新进入，拷贝上传链接完成上传！
+      </view>
+    </view>            
+    <view wx:if='{{floodSituation.attatch}}' class='pair' style='margin-top:.6em;'>
+      <view style='width:2em;text-align:right;'>
+      <image class='my-icon' style='margin-top:0;' src='../../common/resources/icon/attatch.png'></image>
+      </view>
+      <view style='font-size: 14px;padding-top: .1em;'>{{floodSituation.attatch}}</view>
+    </view>
+                  
+  </view>  
+  
+</view>
+
+<button hidden='{{!canManage}}'  type='primary' bindtap='saveSituation'>保存</button>
+<button hidden='{{!canManage}}' type='warn' bindtap='doDelete'>删除</button>

@@ -1,0 +1,22 @@
+@import "../../common/lib/weui.wxss";
+
+textarea {
+    width: 700rpx;
+    padding: 25rpx 0;
+}
+.textarea-wrp {
+    padding: 0 25rpx;
+    background-color: #fff;
+}
+.main-block{
+  width: 100%;
+  margin-bottom:50px;
+  overflow: auto;
+  height: 100%;
+}
+
+.situation-block{
+  margin: 5px;
+  vertical-align: middle;
+  background: #fff;
+}

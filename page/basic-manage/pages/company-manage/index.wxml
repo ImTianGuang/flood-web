@@ -1,0 +1,19 @@
+    <view class='pair'>
+                <input class='weui-cells__title' style='width:30%;' disabled='true' value='名称:'/>
+                <input class="weui-cells__title" style='width:70%;' type="text" value='{{company.name}}' placeholder='请输入单位名称' data-idx="{{index}}" bindinput='onInputName'/>
+    </view>
+    <view class='pair'>
+                <input class='weui-cells__title' style='width:30%;' disabled='true' value='地址:'/>
+                <input class="weui-cells__title" style='width:70%;' type="number" value='{{company.address}}' placeholder='请输入单位地址' data-idx="{{index}}" bindinput='onInputAddress' />
+    </view>
+    <view class='pair'>
+                <input class='weui-cells__title' style='width:30%;' disabled='true' value='邮编:'/>
+                <input class="weui-cells__title" style='width:70%;' type="number" value='{{company.postCode}}' placeholder='请输入单位邮编'  data-idx="{{index}}" bindinput='onInputPostCode'/>
+    </view>
+    <view class='pair'>
+                <input class='weui-cells__title' style='width:30%;' disabled='true' value='邮箱:'/>
+                <input class="weui-cells__title" style='width:70%;' type="number" value='{{company.email}}' placeholder='请输入单位邮箱'  data-idx="{{index}}" bindinput='onInputEmail'/>
+    </view>
+
+<view style='width:100%;height:75px;'></view>
+<button type='primary' class='save-button' bindtap='saveCompany'>保存</button>

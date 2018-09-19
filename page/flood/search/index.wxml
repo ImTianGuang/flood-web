@@ -1,0 +1,27 @@
+
+<import src="../../common/calendar/index.wxml"/>
+<view class='first-block'>
+<include src="../../../wxSearchView/wxSearchView.wxml" />
+</view>
+<view class='select-block'>
+  <view class='pair'>  
+    <view class='select-l' bindtap='showCalendar' data-idx='from'>{{startDate ? startDate : '请选择'}}</view>
+    <view style='color:#3cc51f;front-size:16px;margin-top:7px;width:10%;text-align:center;'>至</view>
+    <view class='select-r' bindtap='showCalendar' data-idx='to'>{{endDate ? endDate : '请选择'}}</view>
+  </view>
+</view>
+<view class="{{isShowCalendar ? 'calendar-wrap-show' : 'calendar-wrap-hd'}}">
+   <template is="calendar" data="{{...calendar}}" />
+</view>
+<view class='i_topNews_slide_main'>
+  <view class='i_con_list'>
+    <block wx:for="{{situationList}}" wx:key="*item">
+      <navigator url="../edit/index?situationId={{item.id}}&&isAdd=false" class="i_con">
+        <view class="i_con_l">
+          <view class='weui-article__h2'>{{item.title}}</view>
+          <view class='i_con_cmt' style='display: inherit'>{{item.companyName}}  {{item.createTimeStr}}</view>
+        </view> 
+      </navigator>
+    </block>
+  </view>
+</view>

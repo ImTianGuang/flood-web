@@ -1,0 +1,13 @@
+
+<view class='first-block'>
+<include src="../../wxSearchView/wxSearchView.wxml" />
+</view>
+
+<view class="navigator-box navigator-box-show">
+<block wx:for="{{companyList}}" wx:key="*item">
+                <navigator url="company-detail/index?id={{item.id}}&fromManage=false" class="navigator">
+                  <view class="navigator-text">{{item.name}}</view>
+                  <view class="navigator-arrow"></view>
+                </navigator>
+              </block>
+</view>

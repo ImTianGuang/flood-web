@@ -1,0 +1,25 @@
+<view class='login-box'>
+  <view class='login-header'>
+    <view>
+      <image class='logo' src='../common/resources/icon/logo-full.png'></image>
+    </view>
+    
+  </view>
+
+  <view class='tab'>
+  </view>
+
+  <view class='box'>
+    <view class='login-body'>
+      <view class='form-group'>
+        <input class='form-input' placeholder='请输入用户名' bindinput='onAccountInput'></input>
+      </view>
+      <view class='form-group'>
+        <input password class='form-input' placeholder='请输入密码' bindinput='onPasswordInput'></input>
+      </view>
+      <view class='form-group'>
+        <input class='btn btn-primary btn-block submit' style='padding-left:10px;' disabled='true' value='登陆' bindtap='login'></input>
+      </view>
+    </view>
+  </view>
+</view>

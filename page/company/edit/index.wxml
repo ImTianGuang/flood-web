@@ -1,0 +1,198 @@
+<view class="kind-list" style='overflow:hidden'>
+      <block wx:for-items="{{list}}" wx:key="{{item.id}}">
+
+        <view class="kind-list-item">
+
+          <view id="{{item.id}}" class="kind-list-item-hd {{item.open ? 'kind-list-item-hd-show' : ''}}" bindtap="kindToggle">
+            <view class="kind-list-text">{{item.name}}</view>
+          </view>
+
+          <view class=" {{item.open ? 'kind-list-item-bd-show' : 'kind-list-item-bd'}}">
+            <view class="{{item.open ? 'my-navigator-box-show' : 'my-navigator-box'}}">
+              <!-- 通讯录-start -->
+              <view wx:if="{{item.id == 'phones' && item.open}}" style='width:100%'>
+                <view wx:for-items="{{item.data.phoneList}}" wx:for-item="phoneInfo" wx:key="*phoneInfo" wx:for-index="phoneIdx">
+                <view class='pair' style='margin-top:2px;'>
+                    <view class='my-title' style='width:25%;'>{{phoneInfo.name}}</view>
+                    <!-- <view style='width:75%;text-align:right'>
+                      <image class='my-icon-right' src='../../common/resources/icon/plus.png' bindtap='addPhones' data-attributionid='{{phoneInfo.id}}'></image>
+                    </view> -->
+                </view>      
+
+                <view wx:for-items="{{phoneInfo.userList}}" wx:for-item="user" wx:key="*user" wx:for-index="useridx" class='select-block' style='border-radius:20px;margin-top:6px;'>
+                
+                <!-- 联系人-start -->
+                <view wx:if="{{user.status}}">
+                
+                <!-- <view class='plus-sub-line'>
+                <image class='my-icon-right1' src='../../common/resources/icon/subtract.png' bindtap='deletePhones' data-phoneidx='{{phoneIdx}}' data-idx='{{useridx}}'></image>
+                </view> -->
+
+                <!-- 指挥机构 -->
+                <view wx:if="{{phoneInfo.id == 0}}">
+
+                <view class='pair'>
+                  <input class='my-input-l' style='width:5em' disabled='true' value='名称:'/>
+                  <picker class = 'my-input' bindchange="bindFloodTitleChange" value="0" range="{{floodTitleList}}" range-key='name' data-idx='{{useridx}}' data-phoneidx='{{phoneIdx}}' disabled='true'>
+                    <view class='pair'>
+                      <view style='width:80%;padding-top:4px;'>{{user.floodTitle}}</view>
+                      <!-- <view style='width: 20%;text-align: right;'>
+                      <image class='my-icon-right1' style='padding-right: 7px;padding-top: 5px;height: 15px;width:15px;' src='../../common/resources/icon/select.png'></image>
+                      </view> -->
+                    </view>
+                  </picker>
+                </view>
+
+                <view class='pair'>
+                <input class='my-input-l' style='width:5em' disabled='true' value='姓名:'/>
+                <input class="my-input" type="text" value='{{user.userName}}' placeholder='请输入姓名' bindinput='onNameInput' data-idx='{{useridx}}' data-phoneidx='{{phoneIdx}}'/>
+                </view>
+
+                <view class='pair'>
+                <input class='my-input-l' style='width:5em' disabled='true' value='职务:'/>
+                <picker class = 'my-input' bindchange="bindPositionChange" value="{{user.positionIdx}}" range="{{positions}}" range-key='name' data-idx='{{useridx}}' data-phoneidx='{{phoneIdx}}'>
+                  <view class='pair'>
+                      <view style='width:80%;padding-top:4px;'>{{positions[user.positionIdx].name}}</view>
+                      <view style='width: 20%;text-align: right;'>
+                      <image class='my-icon-right1' style='padding-right: 7px;padding-top: 5px;height: 15px;width:15px;' src='../../common/resources/icon/select.png'></image>
+                      </view>
+                    </view>
+                </picker>
+                </view>
+
+                <view class='pair'>
+                <input class='my-input-l' style='width:5em' disabled='true' value='工作手机:'/>
+                <input class="my-input" type="number" value='{{user.workPhone}}' placeholder='请输入工作手机' bindinput='onWorkPhoneInput' data-idx='{{useridx}}' data-phoneidx='{{phoneIdx}}'/>
+                </view>
+
+                <view class='pair'>
+                <input class='my-input-l' style='width:5em' disabled='true' value='手机:'/>
+                <input class="my-input" type="number" value='{{user.userPhone}}' placeholder='请输入手机'  bindinput='onPhoneInput' data-idx='{{useridx}}' data-phoneidx='{{phoneIdx}}'/>
+                </view>
+
+                <view class='pair'>
+                <input class='my-input-l' style='width:5em' disabled='true' value='传真:'/>
+                <input class="my-input" type="number" value='{{user.fax}}' placeholder='请输入传真' bindinput='onFaxInput' data-idx='{{useridx}}' data-phoneidx='{{phoneIdx}}'/>
+                </view>
+                </view>
+                <!-- 指挥机构end -->
+                <!-- 指挥部 -->
+                <view wx:if="{{phoneInfo.id == 1}}">
+                  <view class='pair'>  
+                    <input class="my-input-l" style='width:15em' value='{{user.floodTitle}}:'></input>
+                    <input class="my-input" type="number" value='{{user.workPhone}}' placeholder='请输入{{user.floodTitle}}'  bindinput='onWorkPhoneInput' data-idx='{{useridx}}' data-phoneidx='{{phoneIdx}}'/>
+                  </view>
+                  <view class='pair'>
+                    <input class='my-input-l' style='width:15em' disabled='true' value='传真:'/>
+                    <input class="my-input" type="number" value='{{user.fax}}' placeholder='请输入传真' bindinput='onFaxInput' data-idx='{{useridx}}' data-phoneidx='{{phoneIdx}}'/>
+                  </view>
+                </view>
+                <!-- 指挥部-end -->
+                </view>
+                <!-- 联系人-end -->
+                </view>
+                <!-- 所有联系人-end -->
+                </view>
+                <!-- 所有类别-end -->
+              </view>
+              <!-- 通讯录-end -->
+              <!-- 物资-start -->
+              <view wx:if="{{item.id == 'asserts' && item.open}}" style='width:100%;'>
+              <view class='select-block' style='border-radius:20px;'>
+                <view class='pair'>
+                    <input class='my-input-l' style="width:15em" disabled='true' value='防汛负责人:'/>
+                    <input class="my-input" type="text" value='{{company.floodManager}}' placeholder='请输入防汛负责人' bindinput='onInputfloodManager'/>
+                </view>
+                <view class='pair'>
+                    <input class='my-input-l' style="width:15em" disabled='true' value='防汛负责人手机:'/>
+                    <input class="my-input" type="number" value='{{company.floodManagerPhone}}' placeholder='请输入防汛负责人手机' bindinput='onInputdManagerPhone'/>
+                </view>
+              </view>
+              <view wx:for-items="{{item.data.assertsList}}" wx:for-item="asserts" wx:key="*asserts" >
+                  <view class='pair'>  
+                    <input class="my-input-l" disable='true' style='width:15em' value='{{asserts.assertsTypeName}}:'></input>
+                    <input class="my-input" type="text" value='{{asserts.assertsValue}}' placeholder='请输入数量'  bindinput='onAssertsInput' data-idx='{{index}}'/>
+                  </view>
+                <!-- block-end -->
+              </view>
+              <!-- for-end -->
+              <!-- <view style='width:100%;text-align:right;background:#ffff;margin-top:5px;'>
+                  <image class='my-icon-right' src='../../common/resources/icon/plus.png' bindtap='addAsserts'></image>
+                </view> -->
+              </view>
+              <!-- 物资-end -->
+              <!-- 预案-start -->
+              <view wx:if="{{item.id == 'plan' && item.open}}" class='select-block' style='text-align: center;'> 
+                <view class='article' style='height: auto;background: #fff;margin-top: .5em;'>
+                  <view class='pair'>
+                    <view class='my-input' style='width:80%;padding-top:.3em;'>
+                    {{uploadUrl}}
+                    </view>
+                    <view class='my-input' style='width:20%;padding-top:.3em;color:#666' bindtap='copy'>复制链接</view>
+                  </view>
+                  <view class='i_con_cmt'>
+                    请点击【复制链接】按钮，拷贝链接到PC端浏览器打开，完成上传！
+                  </view>
+                  
+                  <view wx:if='{{company.floodPlan}}' class='pair' style='margin-top:.6em;'>
+                    <view style='width:2em;text-align:right;'>
+                    <image class='my-icon' style='margin-top:0;' src='../../common/resources/icon/attatch.png'></image>
+                    </view>
+                    <view style='font-size: 14px;padding-top: .1em;'>{{company.floodPlan}}</view>
+                  </view>
+                  
+                </view>
+                
+              </view>
+              <!-- 预案-end -->
+              <!-- 其他-start -->
+              <view wx:if="{{item.id == 'basic'}}" class='select-block'>
+                <view wx:if='{{item.open}}' class='select-block' style='border-radius:20px;'>
+                  <view class='pair'>
+                    <input class='my-input-l' disabled='true' value='单位名称:'/>
+                    <input class="my-input" type="text" value='{{company.name}}' placeholder='请输入单位名称' bindinput='onInputName' style='border:1px solid #E1E1E1;'/>
+                  </view>
+
+                  <view class='pair'>
+                    <input class='my-input-l' disabled='true' value='单位地址:'/>
+                    <input class="my-input" type="text" value='{{company.address}}' placeholder='请输入单位地址' bindinput='onInputAddress' style='border:1px solid #E1E1E1;'/>
+                  </view>
+
+                  <view class='pair'>
+                    <input class='my-input-l' disabled='true' value='单位邮箱:'/>
+                    <input class="my-input" type="text" value='{{company.email}}' placeholder='请输入单位邮箱' bindinput='onInputEmail' style='border:1px solid #E1E1E1;'/>
+                  </view>
+
+                  <view class='pair'>
+                    <input class='my-input-l' disabled='true' value='记录人员:'/>
+                    <input class="my-input" type="text" value='{{company.recordPerson}}' placeholder='请输入记录人员' bindinput='onInputRecordPerson' style='border:1px solid #E1E1E1;'/>
+                  </view>
+
+                  <view class='pair'>
+                    <input class='my-input-l' disabled='true' value='记录人手机:'/>
+                    <input class="my-input" type="number" value='{{company.recordPersonPhone}}' placeholder='请输入记录人电话' bindinput='onInputRecordPersonPhone' style='border:1px solid #E1E1E1;'/>
+                  </view>
+
+                  <view class='pair'>
+                    <input class='my-input-l' disabled='true' value='填表日期:'/>
+                    <picker mode="date" value="{{company.recordDate}}" start="2018-09-01" end="2050-09-01" bindchange="bindRecordDateChange">
+                    <view class="my-input">{{company.recordDate}}</view>
+                    </picker>
+                  </view>
+
+                  
+                </view>
+              </view>
+              <!-- 其他-end -->
+            </view>
+          </view>
+        </view>
+      </block>
+      <view style='width:100%;height:140px;'></view>
+         <button type='primary' bindtap='save'>保存</button>
+    <button type='warn' bindtap='doDelete'>删除该单位</button>
+    </view>
+
+ 
+
+    

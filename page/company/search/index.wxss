@@ -1,0 +1,17 @@
+@import "../../../wxSearchView/wxSearchView.wxss";
+@import "../../common/index.wxss";
+@import "../../common/lib/weui.wxss";
+
+.first-block{
+width: 100%;
+
+text-align: center;
+display: inline-block;
+}
+
+.second-block{
+width: 100%;
+
+  background: #FFFFFF;
+    display: inline-block;
+}

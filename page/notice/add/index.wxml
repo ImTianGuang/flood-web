@@ -1,0 +1,14 @@
+
+<view class='article' style='height:90%;width:96%;'>
+  <view class='article_head'>
+    <input class="my-input" style='background-color:#ffff;width:100%;margin-left:0;' auto-focus placeholder="请输入标题" bindinput='onTitleInput' value='{{message.title}}'/>
+  </view>
+  <view class='article_content' style='height:85%;'>
+  <textarea class='my-input' maxlength="1000" style='height:85%; width:100%; background-color:#ffff;margin-top:5px;margin-left:0;' bindinput='onContentInput' placeholder='请输入内容' value='{{message.content}}'/>
+  </view>
+    
+</view>
+<view style='width:100%; height: 50px;'></view>
+<view class='fixed-bottom'>
+<button type='primary' style="margin-top:1px" bindtap='save'>保存</button>
+</view>

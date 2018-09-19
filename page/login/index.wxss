@@ -1,0 +1,118 @@
+.login-box {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.login-header {
+    padding-top: 40px;
+    min-height: 240px;
+    text-align:center;
+}
+
+.logo {
+  width:220px;
+  height: 90px;
+}
+.tab {
+    border-bottom: 0;
+    text-align: center;
+    display: block;
+    list-style-type: disc;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 40px;
+}
+
+.box {
+    min-height: 450px;
+}
+
+.login-body {
+    margin: 0 auto;
+    width: 80%;
+    max-width: 260px;
+}
+
+.form-group {
+    position: relative;
+    width: 100%;
+    height: 45px;
+    margin-bottom: 10px;
+}
+
+.form-input {
+    padding-left: 10px;
+    line-height: 16px;
+    width: 100%;
+    height: 100%;
+    outline: none;
+    border: 1px solid #E0E0E0;
+}
+
+.form-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 45px;
+    height: 100%;
+    font-size: 20px;
+    line-height: 45px;
+    text-align: center;
+    color: #c5c5c5;
+}
+
+.h1 {
+    display: block;
+    font-size: 2em;
+    -webkit-margin-before: 0.67em;
+    -webkit-margin-after: 0.67em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    font-weight: bold;
+}
+
+.btn {
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    outline: none;
+    display: inline-block;
+    -webkit-appearance: none;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+    color: #f55d54;
+    line-height: 24px;
+    margin: 0 5px;
+    background: none;
+    border: none;
+}
+.btn-block {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.btn-primary {
+    color: #fff;
+    border: 1px solid transparent;
+    background: #f55d54;
+    -webkit-box-shadow: 0px 6px 20px 0px rgba(245,92,84,0.16);
+    box-shadow: 0px 6px 20px 0px rgba(245,92,84,0.16);
+}
+
+.form-group-icon {
+    padding-left: 45px;
+}
