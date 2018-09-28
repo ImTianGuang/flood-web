@@ -12,7 +12,8 @@ Page({
     floodSituation:null,
     situationList:null,
     solutionList:null,
-    floodCreateTime:""
+    floodCreateTime:"",
+    downloadUrl: getApp().globalData.serviceHost
   },
 
   onLoad: function (options) {
@@ -43,7 +44,21 @@ Page({
           })
           that.matchAllTypes();
         }
-      })
+      });
+      util.doGet({
+        url: getApp().globalData.serviceHost + "/manage/downloadUrl",
+        data: {
+          uploadType: 3,
+          refId: options.situationId,
+          title: '对应与处置附件上传'
+        },
+        success: function (url) {
+          var downloadUrl = that.data.downloadUrl;
+          that.setData({
+            downloadUrl: downloadUrl + url
+          })
+        }
+      });
     }
    
     util.doGet({
@@ -286,6 +301,12 @@ Page({
           "duration": 800
         });
       }
+    });
+  },
+  copy: function (e) {
+    var downloadUrl = this.data.downloadUrl
+    wx.setClipboardData({
+      data: downloadUrl
     });
   }
 })

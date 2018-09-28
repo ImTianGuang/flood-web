@@ -8,14 +8,14 @@
       </view>
     </view>
   </view>
-    <view wx:if="{{showExport}}" class="weui-search-bar__cancel-btn" style='padding-top:3px;line-height:15px;' bindtap="wxExport">
-        <image style='width:25px;height:25px;margin-left:2px;' src='../../common/resources/icon/export.png'></image>
-         <!-- <text data-key='search'>导出</text> -->
+    <view wx:if="{{showExport}}" class="weui-search-bar__cancel-btn" style='padding-top:4px;line-height:15px;' bindtap="wxExport">
+        <!-- <image style='width:25px;height:25px;margin-left:2px;' src='../../common/resources/icon/export.png'></image> -->
+         <text data-key='search'>导出</text>
          <!-- <text wx:else data-key='back'>取消</text> -->
      </view>
      <view wx:if="{{showPlus}}" class="weui-search-bar__cancel-btn" bindtap="wxAddItem"  style='padding-top:4px;line-height:15px;'>
-     <image style='width:22px;height:22px;margin-left:2px;' src='../../common/resources/icon/plus-list.png'></image>
-         <!-- <text data-key='search'>新增</text> -->
+     <!-- <image style='width:22px;height:22px;margin-left:2px;' src='../../common/resources/icon/plus-list.png'></image> -->
+         <text data-key='search'>新增</text>
          <!-- <text wx:else data-key='back'>取消</text> -->
      </view>
 </view>

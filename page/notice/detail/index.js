@@ -7,7 +7,8 @@ Page({
   data: {
     message:{},
     canMagage: false,
-    createTime: ""
+    createTime: "",
+    downloadUrl: getApp().globalData.serviceHost
   },
 
   /**
@@ -32,7 +33,20 @@ Page({
             createTime: date.toLocaleDateString()
           })
         }
-      })
+      });
+      util.doGet({
+        url: getApp().globalData.serviceHost + "/manage/downloadUrl",
+        data: {
+          uploadType: 1,
+          refId: options.id
+        },
+        success: function (url) {
+          var downloadUrl = that.data.downloadUrl;
+          that.setData({
+            downloadUrl: downloadUrl + url
+          })
+        }
+      });
     }
     
   },
@@ -103,7 +117,6 @@ Page({
 
   save: function (e) {
     var message = this.data.message;
-    debugger;
     util.doPost({
       url: getApp().globalData.serviceHost + '/manage/updateMessage',
       data: message,
@@ -115,5 +128,11 @@ Page({
         });
       }
     })
+  },
+  copy: function (e) {
+    var downloadUrl = this.data.downloadUrl
+    wx.setClipboardData({
+      data: downloadUrl
+    });
   }
 })

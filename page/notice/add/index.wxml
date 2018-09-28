@@ -1,14 +1,38 @@
 
-<view class='article' style='height:90%;width:96%;'>
-  <view class='article_head'>
+<view class='article' style='height:60%;width:96%;'>
+  <view class='article_head' style='height:10%;'>
     <input class="my-input" style='background-color:#ffff;width:100%;margin-left:0;' auto-focus placeholder="请输入标题" bindinput='onTitleInput' value='{{message.title}}'/>
   </view>
-  <view class='article_content' style='height:85%;'>
-  <textarea class='my-input' maxlength="1000" style='height:85%; width:100%; background-color:#ffff;margin-top:5px;margin-left:0;' bindinput='onContentInput' placeholder='请输入内容' value='{{message.content}}'/>
+  <view class='article_content' style='height:90%;'>
+  <textarea class='my-input' maxlength="1000" style='height:100%; width:100%; background-color:#ffff;margin-top:5px;margin-left:0;' bindinput='onContentInput' placeholder='请输入内容' value='{{message.content}}'/>
   </view>
-    
 </view>
-<view style='width:100%; height: 50px;'></view>
-<view class='fixed-bottom'>
-<button type='primary' style="margin-top:1px" bindtap='save'>保存</button>
+<view class='select-block' style='display:inline-flex;height:50px;margin-top:14px;'>
+        <view class="title" style='width:50%;'>附件上传</view>
+  </view>
+<view wx:if='{{message.id > 0}}'>
+    <view class='pair'>
+      <view class='my-input' style='width:80%;padding-top:.3em;'>
+          {{uploadUrl}}
+      </view>
+      <view class='my-input' style='width:20%;padding-top:.3em;color:#666' bindtap='copy'>复制链接       </view>
+    </view>
+    <view class='i_con_cmt'>
+      请点击【复制链接】按钮，拷贝链接到PC端浏览器打开，完成上传！
+    </view>
 </view>
+<view wx:if='{{!message.id || message.id <= 0}}'>
+  <view class='i_con_cmt'>
+    如需上传附件，请先点击保存按钮，再重新进入，拷贝上传链接完成上传！
+  </view>
+</view> 
+
+<view wx:if='{{message.attatch}}' class='pair' style='margin-top:.6em;'>
+  <view style='width:2em;text-align:right;'>
+    <image class='my-icon' style='margin-top:0;' src='../../common/resources/icon/attatch.png'></image>
+  </view>
+  <view style='font-size: 14px;padding-top: .1em;'>{{message.attatch}}</view>
+</view>
+
+<button type='primary' bindtap='save'>保存</button>
+<button type='warn' bindtap='delete'>删除</button>

@@ -144,7 +144,7 @@ padding-right:12px;
   height:80%;
 }
 .i_con_cmt {
-    height: 15px;
+    height: auto;
     font-size: 11px;
     color: #999;
     display: inline-block;

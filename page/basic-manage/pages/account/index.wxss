@@ -1,3 +1,7 @@
+/* page/basic-manage/pages/account/account.wxss */
+@import "../../../common/index.wxss";
+@import "../../../common/lib/weui.wxss";
+
 .login-box {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -13,7 +17,6 @@
 
 .login-header {
     padding-top: 40px;
-    min-height: 240px;
     text-align:center;
 }
 

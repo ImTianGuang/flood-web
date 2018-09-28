@@ -211,10 +211,13 @@ Page({
       title: "",
       workPhone: "",
       phone: "",
-      positionIdx: 1,
+      positionIdx: -1,
       isLast: true,
+      isNew: true,
       status: 1,
-      floodTitle: this.data.floodTitleList[0].name
+      floodTitle: '指挥部成员',
+      orgCode: 0,
+      orgTitle: "指挥机构"
     };
     var attribution = {};
     for (var i = 0, len = phoneData.phoneList.length; i < len; i++) {

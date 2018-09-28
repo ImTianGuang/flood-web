@@ -8,9 +8,24 @@
     </view>
   </view>
   <view class='weui-article__section'>
-  <text class='article_content'>
-  {{message.content}}
-  </text>
+    <text class='article_content'>
+    {{message.content}}
+    </text>
+  </view>
+  <view wx:if='{{message.attatch}}'>
+    <view class='article' style='height: auto;background: #fff;margin-top: .5em;'>           
+      <view class='pair' style='margin-top:.6em;'>
+        <view style='width:2em;text-align:right;'>
+          <image class='my-icon' style='margin-top:0;' src='../../common/resources/icon/attatch.png'></image>
+        </view>
+        <view style='font-size: 14px;padding-top: .1em;'>{{message.attatch}}</view>
+        
+      </view> 
+      <view class='my-input' style='width:7em;padding-top:.3em;color:#666;margin-top:0' bindtap='copy'>复制下载链接 </view>
+      <view class='i_con_cmt'>
+      请点击【复制下载链接】按钮，拷贝链接到PC端浏览器中回车，完成下载！
+      </view>             
+    </view>    
   </view>
 </view>
 

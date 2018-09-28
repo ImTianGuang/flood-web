@@ -13,9 +13,10 @@ Page({
     isShowCalendar: false, // 默认不展示日历框
     messageList: [],
     canManage:false,
-    showExport: false,
+    showExport: true,
     showPlus:true,
-    hiddenmodalput: true
+    hiddenmodalput: true,
+    showModalStatus: false
   },
 
   afterTapDay: function (currentSelect) {
@@ -155,7 +156,12 @@ Page({
   },
 
   wxExportFunction: function () {
-    console.log("export company")
+    var showModalStatus = this.data.showModalStatus;
+    var currentStatu = "close";
+    if (!showModalStatus) {
+      currentStatu = "open";
+    }
+    this.util(currentStatu)
   },
 
   showCalendar: function (e) {
@@ -181,6 +187,103 @@ Page({
   wxAddItem: function () {
     wx.navigateTo({
       url: '../add/index',
+    })
+  },
+  util: function (currentStatu) {
+    /* 动画部分 */
+    // 第1步：创建动画实例   
+    var animation = wx.createAnimation({
+      duration: 200,  //动画时长  
+      timingFunction: "linear", //线性  
+      delay: 0  //0则不延迟  
+    });
+
+    // 第2步：这个动画实例赋给当前的动画实例  
+    this.animation = animation;
+
+    // 第3步：执行第一组动画  
+    animation.opacity(0).rotateX(-100).step();
+
+    // 第4步：导出动画对象赋给数据对象储存  
+    this.setData({
+      animationData: animation.export()
+    })
+
+    // 第5步：设置定时器到指定时候后，执行第二组动画  
+    setTimeout(function () {
+      // 执行第二组动画  
+      animation.opacity(1).rotateX(0).step();
+      // 给数据对象储存的第一组动画，更替为执行完第二组动画的动画对象  
+      this.setData({
+        animationData: animation
+      })
+
+      if (currentStatu == 'confirm') {
+        this.exportConfirm();
+      }
+      //关闭  
+      if (currentStatu == "close") {
+        this.setData(
+          {
+            showModalStatus: false
+          }
+        );
+      }
+    }.bind(this), 200)
+
+    // 显示  
+    if (currentStatu == "open") {
+      this.setData(
+        {
+          showModalStatus: true
+        }
+      );
+    }
+  },
+  //确认  
+  exportConfirm: function () {
+    var emails = this.data.emails;
+    if (!emails || emails == '') {
+      wx.showToast({
+        title: '邮箱不能为空',
+      });
+      return;
+    }
+    var that = this;
+    var request = {}
+    request.keyword = this.data.keyword;
+    request.startDateStr = this.data.startDate;
+    request.endDateStr = this.data.endDate;
+    request.emails = emails;
+    util.doPost({
+      url: getApp().globalData.serviceHost + "/manage/exportMessage",
+      data: request,
+      success: function (companyList) {
+        wx.showToast({
+          title: '导出成功',
+        });
+        that.util('close')
+      }
+    })
+    wx.showToast({
+      title: '导出中',
+      icon: 'loading',
+      duration: 10000
+    })
+  },
+  powerDrawer: function (e) {
+    var currentStatu = e.currentTarget.dataset.statu;
+    if (currentStatu == 'confirm') {
+      this.exportConfirm();
+    } else {
+      this.util(currentStatu)
+    }
+  },
+  onContentInput: function (e) {
+    var emails = e.detail.value;
+    console.log(emails);
+    this.setData({
+      emails: emails
     })
   }
 })

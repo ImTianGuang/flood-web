@@ -136,9 +136,6 @@ Page({
       icon: 'loading',
       duration: 10000
     })
-    setTimeout(function () {
-      wx.hideToast()
-    }, 2000)
   },
   powerDrawer: function (e) {
     var currentStatu = e.currentTarget.dataset.statu;

@@ -4,14 +4,23 @@
         autoplay="true" interval="2000" duration="500">
        
           <swiper-item>
-             <image style='width:100%;' src='resources/banner1.jpeg'></image>
+             <image style='width:100%;' src='resources/banner1.jpg'></image>
           </swiper-item>
      
-     <swiper-item>
-             <image  style='width:100%;' src='resources/banner1.jpeg'></image>
+          <swiper-item>
+             <image  style='width:100%;' src='resources/banner2.jpg'></image>
           </swiper-item>
           <swiper-item>
-             <image style='width:100%;' src='resources/banner1.jpeg'></image>
+             <image style='width:100%;' src='resources/banner3.jpg'></image>
+          </swiper-item>
+          <swiper-item>
+             <image style='width:100%;' src='resources/banner4.jpg'></image>
+          </swiper-item>
+          <swiper-item>
+             <image style='width:100%;' src='resources/banner5.jpg'></image>
+          </swiper-item>
+          <swiper-item>
+             <image style='width:100%;' src='resources/banner6.jpg'></image>
           </swiper-item>
       </swiper>
 </view>

@@ -14,7 +14,7 @@
                 <view wx:for-items="{{item.data.phoneList}}" wx:for-item="phoneInfo" wx:key="*phoneInfo" wx:for-index="phoneIdx">
                    
                    <view class='pair' style='margin-top:2px;'>
-                    <view class='title' style='width:25%;'>{{phoneInfo.name}}</view>
+                    <view class='my-input-l' style='width:25%;'>{{phoneInfo.name}}</view>
                    </view>      
 
                 <view wx:for-items="{{phoneInfo.userList}}" wx:for-item="user" wx:key="*user" wx:for-index="useridx">
@@ -53,7 +53,7 @@
                   <input class='my-input-l' style="width:15em" disabled='true' value='防汛负责人电话： {{company.floodManagerPhone}}'/>
  
                   <view wx:for-items="{{item.data.assertsList}}" wx:for-item="asserts" wx:key="*asserts" >
-                    <input wx:if="{{asserts.status == 1}}" class="my-input-l" style='width:15em' value='{{assertsTypeList[asserts.assertsTypeIdx].name}}： {{asserts.assertsValue}}'></input>  
+                    <input wx:if="{{asserts.status == 1}}" disable='true' class="my-input-l" style='width:15em' value='{{assertsTypeList[asserts.assertsTypeIdx].name}}： {{asserts.assertsValue}}'></input>  
           
                   </view>
                   <!-- for-end -->
@@ -66,10 +66,19 @@
               <!-- 物资-end -->
               <!-- 预案-start -->
               <view wx:if="{{item.id == 'plan' && item.open}}" class='select-block' style='text-align: center;'> 
-                <view class='article' style='height:50rem;background:#fff;'>
-                  <view class='article_content' style='height:100%;'>
-                    <textarea class='my-input' maxlength="10000" style='height:100%; width:100%; background-color:#ffff;margin-top:5px;padding-left:5px;padding-top:2px;margin-left:0;' bindinput='onPlanConfirm' placeholder='该单位还未有防汛预案' value='{{company.floodPlan}}' disabled='true'/>
-                  </view>
+                <view wx:if='{{company.floodPlan}}'>
+                  <view class='article' style='height: auto;background: #fff;margin-top: .5em;'>   
+                    <view class='pair' style='margin-top:.6em;'>
+                      <view style='width:2em;text-align:right;'>
+                        <image class='my-icon' style='margin-top:0;' src='../../common/resources/icon/attatch.png'></image>
+                      </view>
+                      <view style='font-size: 14px;padding-top: .1em;'>{{company.floodPlan}}</view>
+                    </view> 
+                    <view class='my-input' style='width:7em;padding-top:.3em;color:#666;margin-top:0' bindtap='copy'>复制下载链接 </view>
+                    <view class='i_con_cmt'>
+                      请点击【复制下载链接】按钮，拷贝链接到PC端浏览器中回车，完成下载！
+                    </view>           
+                  </view>    
                 </view>
               </view>
               <!-- 预案-end -->

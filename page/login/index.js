@@ -88,11 +88,12 @@ Page({
         password: pass
       },
       success: function (res) {
-        if (res && res != '') {
+        if (res && res.result == true) {
           // 存储token
           wx.showToast({
             title: '登陆成功',
           });
+          getApp().globalData.checkResult = res;
           getApp().globalData.hasLogin = true;
           wx.switchTab({
             url: '../home/index',

@@ -20,7 +20,7 @@
       </view>
 
       <view class='select-block' style='display:inline-flex;'>
-        <view class="title" style='width:50%;'>汛情与灾情</view>  
+        <view class="title" style='width:50%;'>汛情与灾情（选填）</view>  
         <view wx:if='{{canManage}}' style='width:50%;text-align:right;'>
         <image class='my-icon-right' src='../../common/resources/icon/plus.png'
         bindtap='addSituation'></image>
@@ -38,7 +38,7 @@
                 </view>
             </view>
             </picker>
-            <input class="my-input" type="text" placeholder="具体情况" disabled='{{!canManage}}' bindinput='onSituationInput' value='{{situation.targetValue}}' data-idx='{{index}}'/>
+            <input class="my-input" type="text" placeholder="数量" disabled='{{!canManage}}' bindinput='onSituationInput' value='{{situation.targetValue}}' data-idx='{{index}}'/>
             </view>
 
             <view wx:if='{{canManage}}' style='width:10%;text-align:right;'>
@@ -49,7 +49,7 @@
       </view>
       
       <view class='select-block' style='display:inline-flex;'>
-        <view class="title" style='width:50%;'>应对措施</view>  
+        <view class="title" style='width:50%;'>应对措施（选填）</view>  
         <view wx:if='{{canManage}}' style='width:50%;text-align:right;'>
         <image class='my-icon-right' src='../../common/resources/icon/plus.png'
         bindtap='addSolution'></image>
@@ -67,7 +67,7 @@
                 </view>
             </view>
             </picker>
-            <input disabled='{{!canManage}}' class="my-input" type="text" placeholder="具体情况" bindinput='onSolutionInput' value='{{solution.targetValue}}' data-idx='{{index}}'/>
+            <input disabled='{{!canManage}}' class="my-input" type="text" placeholder="数量" bindinput='onSolutionInput' value='{{solution.targetValue}}' data-idx='{{index}}'/>
             </view>
             <view wx:if='{{canManage}}' style='width:10%;text-align:right;'>
             <image class='my-icon-right' style='margin-top:1px;margin-bottom:1px;' src='../../common/resources/icon/subtract.png'bindtap='deleteSolution' data-idx='{{index}}'></image>
@@ -80,7 +80,7 @@
   </view>
   <view class='article' style='border-bottom:0px;'>
     <view class='article_content' style='height:250px;'>
-    <textarea class='my-input' maxlength="1000" style='height:100%; width:100%; background-color:#ffff;margin-top:5px;margin-left:0;' bindinput='onFloodDescInput' placeholder='请输入详情描述' value='{{floodSituation.floodDesc}}'/>
+    <textarea class='my-input' maxlength="1000" style='height:100%; width:100%; background-color:#ffff;margin-top:5px;margin-left:0;' bindinput='onFloodDescInput' placeholder='时间 地点 人物 事件 结果' value='{{floodSituation.floodDesc}}'/>
     </view>
   </view>  
 
@@ -110,8 +110,7 @@
       <image class='my-icon' style='margin-top:0;' src='../../common/resources/icon/attatch.png'></image>
       </view>
       <view style='font-size: 14px;padding-top: .1em;'>{{floodSituation.attatch}}</view>
-    </view>
-                  
+    </view>               
   </view>  
   
 </view>

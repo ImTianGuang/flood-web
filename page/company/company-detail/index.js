@@ -36,7 +36,8 @@ Page({
       ],
     positions:[],
     assertsTypeList:[],
-    floodTitleList:[]
+    floodTitleList:[],
+    downloadUrl: getApp().globalData.serviceHost
   },
 
 
@@ -62,6 +63,20 @@ Page({
           fromManage: fromManage
         }
       );
+
+      util.doGet({
+        url: getApp().globalData.serviceHost + "/manage/downloadUrl",
+        data: {
+          uploadType: 0,
+          refId: options.id
+        },
+        success: function (url) {
+          var downloadUrl = that.data.downloadUrl;
+          that.setData({
+            downloadUrl: downloadUrl + url
+          })
+        }
+      });
 
       util.doGet({
         url: app.globalData.serviceHost + "/search/typeSummary",
@@ -501,5 +516,11 @@ Page({
     this.setData({
       company: company
     })
+  },
+  copy: function (e) {
+    var downloadUrl = this.data.downloadUrl
+    wx.setClipboardData({
+      data: downloadUrl
+    });
   }
 })
